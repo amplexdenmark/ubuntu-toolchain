@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [[ $TT ]] ;then
+    source /opt/toolchain/toolchain-setup $TT
+else
+    source /opt/toolchain/utils/toolchain-utils-load
+fi
+
+cd /arm9/$WD
+
+"$@"
