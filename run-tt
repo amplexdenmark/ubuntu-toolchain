@@ -1,11 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
+source /opt/toolchain/utils/toolchain-utils-load
 if [[ $TT ]] ;then
     source /opt/toolchain/toolchain-setup $TT
-else
-    source /opt/toolchain/utils/toolchain-utils-load
 fi
 
 cd /arm9/$WD
 
-"$@"
+exec "$@"

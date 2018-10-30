@@ -15,7 +15,15 @@ RUN apt-get update
 
 RUN apt-get --no-install-recommends install -y build-essential
 
-RUN apt-get dist-upgrade -y && apt-get -y autoremove && apt-get -y autoclean
+RUN apt-get --no-install-recommends install -y bc gawk subversion
+RUN ln -sf libreadline.so.6 /lib/i386-linux-gnu/libreadline.so.5 && \
+    ln -sf libhistory.so.6 /lib/i386-linux-gnu/libhistory.so.5 && \
+    useradd -d /homedir --uid 500 user500 && \
+    useradd -d /homedir --uid 501 user501 && \
+    useradd -d /homedir --uid 502 user502 && \
+    useradd -d /homedir --uid 503 user503 && \
+    useradd -d /homedir --uid 504 user504 && \
+    true
 
 ADD run-tt /sbin/run-tt
 
