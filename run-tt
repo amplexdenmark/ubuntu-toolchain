@@ -5,6 +5,8 @@ if [[ $TT ]] ;then
     source /opt/toolchain/toolchain-setup $TT
 fi
 
-cd /arm9/$WD
+cd /mntdir/$WD
 
+export SSH_AUTH_SOCK=/var/tmp/agentBridge.sock
+socat UNIX-LISTEN:$SSH_AUTH_SOCK,reuseaddr,fork TCP:docker.for.mac.localhost:$SSH_AUTH_PORT &
 exec "$@"
