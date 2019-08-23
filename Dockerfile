@@ -16,8 +16,8 @@ RUN apt-get update
 RUN apt-get --no-install-recommends install -y build-essential
 
 RUN apt-get --no-install-recommends install -y bc gawk subversion
-RUN ln -sf libreadline.so.6 /lib/i386-linux-gnu/libreadline.so.5 && \
-    ln -sf libhistory.so.6 /lib/i386-linux-gnu/libhistory.so.5 && \
+RUN ln -sf libreadline.so.7 /lib/i386-linux-gnu/libreadline.so.5 && \
+    ln -sf libhistory.so.7 /lib/i386-linux-gnu/libhistory.so.5 && \
     useradd -d /homedir --uid 500 user500 && \
     useradd -d /homedir --uid 501 user501 && \
     useradd -d /homedir --uid 502 user502 && \
@@ -27,6 +27,7 @@ RUN ln -sf libreadline.so.6 /lib/i386-linux-gnu/libreadline.so.5 && \
 RUN apt-get --no-install-recommends install -y zip libgmp10:i386 libmpc3:i386 libssl-dev:i386 gcc-multilib
 RUN apt-get --no-install-recommends install -y file valgrind libc6-dbg:i386
 RUN apt-get --no-install-recommends install -y lua5.2 liblua5.2-dev pkg-config socat
+RUN apt-get --no-install-recommends install -y libreadline-dev:i386 libncurses-dev:i386
 
 ADD run-tt /sbin/run-tt
 

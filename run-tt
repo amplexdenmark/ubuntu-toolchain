@@ -2,7 +2,7 @@
 
 source /opt/toolchain/utils/toolchain-utils-load
 if [[ $TT ]] ;then
-    source /opt/toolchain/toolchain-setup $TT
+    tt $TT
 fi
 
 cd /mntdir/$WD

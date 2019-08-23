@@ -14,12 +14,12 @@ clean2:
 clean: clean2
 	rm .docker
 
-bash: clean2 container
+bash: clean2
 	@echo "Starting $(NAME) .."
 	docker run --name $(NAME) --hostname $(NAME) --rm \
 		--env TERM=$(subst -italic,,$(TERM)) -it --entrypoint=/bin/bash $(IMAGE) -i
 
-start: clean2 container
+start: clean2
 	@echo "Running $(NAME) .."
 	docker run --detach --name $(NAME) --hostname $(NAME) --rm --volume `pwd`/storage:/amplex \
 		--publish 8042:8080/tcp $(IMAGE)
