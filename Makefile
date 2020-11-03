@@ -1,18 +1,20 @@
 NAME="ubuntu-toolchain"
 IMAGE="ubuntu-toolchain"
+#OPTS=--no-cache
+#OPTS=--no-cache --pull
 
 all: container
 
 container: .docker
 .docker: Dockerfile run-tt
-	docker build -t $(IMAGE) . && touch .docker
+	docker build -t $(IMAGE) $(OPTS) . && touch .docker
 
 clean2:
 	@echo "Removing old containers .."
 	docker ps -aq --filter name=$(NAME) | ( x=`cat`; [ -z $x ] || docker rm -v $x )
 
 clean: clean2
-	rm .docker
+	rm -f .docker
 
 bash: clean2
 	@echo "Starting $(NAME) .."

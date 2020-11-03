@@ -2,7 +2,7 @@
 
 source /opt/toolchain/utils/toolchain-utils-load
 if [[ $TT ]] ;then
-    tt $TT
+    tt $TT $TT_CCACHE
 fi
 
 cd /mntdir/$WD
