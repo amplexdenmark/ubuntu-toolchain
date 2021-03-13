@@ -5,8 +5,11 @@ if [[ $TT ]] ;then
     tt $TT $TT_CCACHE
 fi
 
+localhost=localhost
+grep -s -q linuxkit /proc/version && localhost=host.docker.internal
+
 cd /mntdir/$WD
 
 export SSH_AUTH_SOCK=/var/tmp/agentBridge.sock
-socat UNIX-LISTEN:$SSH_AUTH_SOCK,reuseaddr,fork TCP:docker.for.mac.localhost:$SSH_AUTH_PORT &
+socat UNIX-LISTEN:$SSH_AUTH_SOCK,reuseaddr,fork TCP:$localhost:$SSH_AUTH_PORT &
 exec "$@"
