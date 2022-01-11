@@ -37,9 +37,10 @@ RUN ln -s libmpfr.so.6 /usr/lib/i386-linux-gnu/libmpfr.so.4
 RUN apt-get --no-install-recommends install -y libreadline-dev:i386 libncurses-dev:i386 zlib1g-dev:i386 zlib1g-dev
 RUN apt-get --no-install-recommends install -y openssl:i386 libusb-dev:i386 bind9-host python3 libusb-1.0-0 python3-pip
 RUN ln -sf python3 /usr/bin/python
+RUN apt-get --no-install-recommends install -y tcl
 
 ADD run-tt /sbin/run-tt
 
 ENTRYPOINT ["/sbin/run-tt"]
-CMD ["bin/bash""]
+CMD ["/bin/bash"]
 
